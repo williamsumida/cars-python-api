@@ -1,8 +1,9 @@
+from fastapi import FastAPI, Depends, HTTPException
+from sqlalchemy.orm import Session
+
 from cars_python_api import crud
 from cars_python_api.models import CarroRequest
 from cars_python_api.database import setup_database, get_database
-from sqlalchemy.orm import Session
-from fastapi import FastAPI, Depends, HTTPException
 
 
 setup_database()

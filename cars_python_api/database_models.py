@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, Numeric, String, Date, Boolean
+
 from cars_python_api.database import Base
 
 
