@@ -1,5 +1,5 @@
-from models import CarroRequest
-from database_models import Carro
+from cars_python_api.models import CarroRequest
+from cars_python_api.database_models import Carro
 from sqlalchemy.orm import Session
 
 

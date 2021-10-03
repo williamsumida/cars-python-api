@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, Numeric, String, Date, Boolean
-from database import Base
+from cars_python_api.database import Base
 
 
 class Carro(Base):
