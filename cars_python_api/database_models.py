@@ -1,5 +1,6 @@
-from sqlalchemy import Column, Integer, Numeric, String, Date
-from database import Base
+from sqlalchemy import Column, Integer, Numeric, String, Date, Boolean
+
+from cars_python_api.database import Base
 
 
 class Carro(Base):
@@ -14,6 +15,7 @@ class Carro(Base):
     aceleracao = Column(Numeric)
     ano = Column(Date)
     origem = Column(String)
+    is_active = Column(Boolean, default=True)
 
 
 class Marca(Base):
@@ -22,3 +24,4 @@ class Marca(Base):
     id = Column(Integer, primary_key=True, index=True)
     nome = Column(String)
     origem = Column(String)
+    is_active = Column(Boolean, default=True)
