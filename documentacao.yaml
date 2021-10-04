@@ -1,0 +1,338 @@
+openapi: 3.0.2
+info:
+  title: API Carros
+  version: 0.1.0
+paths:
+  /carro:
+    get:
+      summary: Get Carros
+      operationId: get_carros_carro_get
+      parameters:
+        - required: false
+          schema:
+            title: Nome
+            type: string
+            default: ''
+          name: nome
+          in: query
+        - required: false
+          schema:
+            title: Origem
+            type: string
+            default: ''
+          name: origem
+          in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      summary: Create Carro
+      description: Cria um carro no banco de dados
+      operationId: create_carro_carro_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CarroRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /carro/{carro_id}:
+    get:
+      summary: Get Carro
+      operationId: get_carro_carro__carro_id__get
+      parameters:
+        - required: true
+          schema:
+            title: Carro Id
+            type: integer
+          name: carro_id
+          in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      summary: Update Carro
+      operationId: update_carro_carro__carro_id__put
+      parameters:
+        - required: true
+          schema:
+            title: Carro Id
+            type: integer
+          name: carro_id
+          in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CarroRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      summary: Delete Carro
+      operationId: delete_carro_carro__carro_id__delete
+      parameters:
+        - required: true
+          schema:
+            title: Carro Id
+            type: integer
+          name: carro_id
+          in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /marca:
+    get:
+      summary: Get Marcas
+      operationId: get_marcas_marca_get
+      parameters:
+        - required: false
+          schema:
+            title: Nome
+            type: string
+            default: ''
+          name: nome
+          in: query
+        - required: false
+          schema:
+            title: Origem
+            type: string
+            default: ''
+          name: origem
+          in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      summary: Create Marca
+      description: Cria um marca no banco de dados
+      operationId: create_marca_marca_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarcaRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /marca/{marca_id}:
+    get:
+      summary: Get Marca
+      operationId: get_marca_marca__marca_id__get
+      parameters:
+        - required: true
+          schema:
+            title: Marca Id
+            type: integer
+          name: marca_id
+          in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      summary: Update Marca
+      operationId: update_marca_marca__marca_id__put
+      parameters:
+        - required: true
+          schema:
+            title: Marca Id
+            type: integer
+          name: marca_id
+          in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarcaRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      summary: Delete Marca
+      operationId: delete_marca_marca__marca_id__delete
+      parameters:
+        - required: true
+          schema:
+            title: Marca Id
+            type: integer
+          name: marca_id
+          in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    CarroRequest:
+      title: CarroRequest
+      required:
+        - nome
+        - km_por_galao
+        - cilindros
+        - cavalos_de_forca
+        - peso
+        - aceleracao
+        - ano
+        - origem
+      type: object
+      properties:
+        nome:
+          title: Nome
+          type: string
+        km_por_galao:
+          title: Km Por Galao
+          type: number
+        cilindros:
+          title: Cilindros
+          type: number
+        cavalos_de_forca:
+          title: Cavalos De Forca
+          type: number
+        peso:
+          title: Peso
+          type: number
+        aceleracao:
+          title: Aceleracao
+          type: number
+        ano:
+          title: Ano
+          type: string
+          format: date
+        origem:
+          title: Origem
+          type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    MarcaRequest:
+      title: MarcaRequest
+      required:
+        - nome
+        - origem
+      type: object
+      properties:
+        nome:
+          title: Nome
+          type: string
+        origem:
+          title: Origem
+          type: string
+    ValidationError:
+      title: ValidationError
+      required:
+        - loc
+        - msg
+        - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            type: string
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
